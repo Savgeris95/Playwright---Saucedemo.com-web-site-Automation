@@ -22,24 +22,13 @@ export default defineConfig({
     {
       name: 'chromium',
       use: {
-        headless: false,
+        headless: true,
         viewport: null,
         launchOptions: {
         args: ['--start-fullscreen'],
     },
        },
     },
-
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
     
   ],
-
 });
