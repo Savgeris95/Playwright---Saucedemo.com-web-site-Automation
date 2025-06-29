@@ -13,6 +13,7 @@ test(' Test Case 1: Login and Verify Product Page', async ({pm,page}) => {
 
   //Log Out
   await pm.basePage().logOut()
+  await pm.basePage().closeTab()
 });
 
 test('Test Case 2: Add Two Items to Cart and Verify Cart Count', async({pm})=>{
@@ -30,6 +31,7 @@ test('Test Case 2: Add Two Items to Cart and Verify Cart Count', async({pm})=>{
 
   //Log Out and close window
   await pm.basePage().logOut()
+  await pm.basePage().closeTab()
 })
 
 test('Test Case 3: Remove Item from Cart', async ({pm}) => {
@@ -50,6 +52,7 @@ test('Test Case 3: Remove Item from Cart', async ({pm}) => {
 
    //Log Out and close window
   await pm.basePage().logOut()
+  await pm.basePage().closeTab()
 })
 
 test('Test Case 4: Complete a Checkout Flow Successfully', async ({page,pm}) => {
@@ -77,7 +80,7 @@ test('Test Case 4: Complete a Checkout Flow Successfully', async ({page,pm}) => 
 
    //Log Out and close window
   await pm.basePage().logOut()
-
+  await pm.basePage().closeTab()
 })
 
 test('Test Case 5: Logout and Prevent Back Navigation', async ({page,pm}) => {
@@ -94,7 +97,7 @@ test('Test Case 5: Logout and Prevent Back Navigation', async ({page,pm}) => {
   await expect(errorMessage).toBeVisible()
 
    //Log Out and close window
-  await pm.basePage().logOut()
+  await pm.basePage().closeTab()
 })
 
 test('Test Case 6: Sort Products by Price', async ({pm}) => {
@@ -115,6 +118,7 @@ test('Test Case 6: Sort Products by Price', async ({pm}) => {
 
    //Log Out and close window
   await pm.basePage().logOut()
+  await pm.basePage().closeTab()
 })
 
 test('Test Case 7: Add All Products and Complete Checkout', async ({page,pm}) => {
@@ -162,7 +166,7 @@ test('Test Case 7: Add All Products and Complete Checkout', async ({page,pm}) =>
 
    //Log Out and close window
   await pm.basePage().logOut()
-
+  await pm.basePage().closeTab()
 })
 
 
