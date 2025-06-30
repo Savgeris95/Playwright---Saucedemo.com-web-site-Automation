@@ -169,4 +169,35 @@ test('Test Case 7: Add All Products and Complete Checkout', async ({page,pm}) =>
   await pm.basePage().closeTab()
 })
 
+test('Test Case 8: Cart Persists After Page Reload', async ({ pm, page }) => {
+  // Step 1: Add 2 items to cart
+  await pm.productPage().addProductToCart('Sauce Labs Backpack')
+  await pm.productPage().addProductToCart('Sauce Labs Bolt T-Shirt')
+
+  // Step 2: Verify cart badge is 2
+  const initialBadge = await pm.productPage().shoppingCartBadge().textContent()
+  expect(initialBadge).toBe('2')
+
+  // Step 3: Reload the page
+  await page.reload()
+
+  // Step 4: Verify cart badge is still 2 after reload
+  const badgeAfterReload = await pm.productPage().shoppingCartBadge().textContent()
+  expect(badgeAfterReload).toBe('2')
+
+  // Step 5: Go to cart page
+  await pm.productPage().clickCartLink()
+
+  // Step 6: Check both products are still listed
+  const items = await pm.cardPage().getCartItems()
+  expect(items).toEqual(expect.arrayContaining([
+    'Sauce Labs Backpack',
+    'Sauce Labs Bolt T-Shirt'
+  ]))
+
+  // Step 7: Logout and close tab
+  await pm.basePage().logOut()
+  await pm.basePage().closeTab()
+})
+
 
